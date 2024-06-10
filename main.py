@@ -1,5 +1,4 @@
 import os
-
 import aiohttp
 import asyncio
 import logging
@@ -44,9 +43,6 @@ HEADERS = {
     'Host': 'api.hamsterkombat.io',
     'Origin': 'https://hamsterkombat.io',
     'Referer': 'https://hamsterkombat.io/',
-    'Sec-Ch-Ua': '"Brave";v="125", "Chromium";v="125", "Not.A/Brand";v="24"',
-    'Sec-Ch-Ua-Mobile': '?0',
-    'Sec-Ch-Ua-Platform': '"Windows"',
     'Sec-Fetch-Dest': 'empty',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Site': 'same-site',
