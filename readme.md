@@ -1,6 +1,6 @@
-# HamsterKombat Farmer Bot
+# HamsterKombat Farmer Script
 
-This is a Python-based bot for the HamsterKombat game. It automates taps and boosts in the game by synchronizing data, executing taps, claiming boosts, and scheduling future tasks.
+This is a Python-based script for the HamsterKombat game. It automates interactions with the "Hamster Kombat" API, performing actions such as "taps", purchasing boosts, claiming the daily bonus, and synchronizing the game state, all in a scheduled and asynchronous manner.
 
 ## Requirements
 
