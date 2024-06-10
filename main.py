@@ -62,6 +62,11 @@ cipher: str = "WEB3"
 
 
 async def fetch_post(url: str, data: Optional[Dict] = None) -> Optional[Dict]:
+    """Fetch a POST request to the given URL with the given data.
+    :param url:
+    :param data:
+    :return:
+    """
     async with aiohttp.ClientSession() as session:
         async with session.post(url, json=data, headers=HEADERS) as response:
             if response.status == 200:
@@ -71,6 +76,11 @@ async def fetch_post(url: str, data: Optional[Dict] = None) -> Optional[Dict]:
 
 
 async def do_taps(count: int, available_taps: int) -> NoReturn:
+    """Send a request to the API with the given count and available taps amount to do the taps.
+    :param count:
+    :param available_taps:
+    :return:
+    """
     data = {
         "count": count,
         "availableTaps": available_taps,
@@ -84,6 +94,9 @@ async def do_taps(count: int, available_taps: int) -> NoReturn:
 
 
 async def get_boosts() -> Optional[List[Dict]]:
+    """Get the boosts available to buy.
+    :return:
+    """
     result = await fetch_post(API_URLS['boosts'])
     if result:
         logger.info(f"Boosts request sent successfully: {len(result.get('boostsForBuy', []))} boosts available.")
@@ -92,6 +105,10 @@ async def get_boosts() -> Optional[List[Dict]]:
 
 
 async def buy_boost(boost_id: int) -> NoReturn:
+    """Buy the boost with the given ID.
+    :param boost_id:
+    :return:
+    """
     data = {
         "boostId": boost_id,
         "timestamp": int(datetime.now(timezone.utc).timestamp())
@@ -102,6 +119,9 @@ async def buy_boost(boost_id: int) -> NoReturn:
 
 
 async def claim_daily_cipher() -> NoReturn:
+    """Claim the daily cipher.
+    :return:
+    """
     data = {"cipher": cipher}
     result = await fetch_post(API_URLS['daily-cipher'], data)
     if result:
@@ -109,6 +129,9 @@ async def claim_daily_cipher() -> NoReturn:
 
 
 async def sync() -> Optional[Dict[str, Any]]:
+    """Sync the user data.
+    :return:
+    """
     result = await fetch_post(API_URLS['sync'])
     if result:
         clicker_user = result.get("clickerUser", {})
@@ -119,6 +142,9 @@ async def sync() -> Optional[Dict[str, Any]]:
 
 
 async def claim_boosts() -> bool:
+    """Claim the boosts available to claim.
+    :return:
+    """
     boosts = await get_boosts()
     if not boosts:
         logger.warning("No boosts available to claim.")
@@ -137,6 +163,9 @@ async def claim_boosts() -> bool:
 
 
 async def execute_taps() -> NoReturn:
+    """Execute the taps and schedule the next sync.
+    :return:
+    """
     sync_data = await sync()
     if sync_data:
         clicker_user = sync_data.get('clickerUser', {})
@@ -150,6 +179,9 @@ async def execute_taps() -> NoReturn:
 
 
 async def schedule_next_sync() -> NoReturn:
+    """Schedule the next sync.
+    :return:
+    """
     sync_data = await sync()
     if sync_data:
         clicker_user = sync_data.get('clickerUser', {})
@@ -178,6 +210,9 @@ async def schedule_next_sync() -> NoReturn:
 
 
 async def execute_taps_and_schedule() -> NoReturn:
+    """Execute the taps and schedule the next sync.
+    :return:
+    """
     await execute_taps()
     await schedule_next_sync()
 
