@@ -1,8 +1,8 @@
-# HamsterKombat Farmer Script
+# 🐹 HamsterKombat Farmer Script
 
 This is a Python-based script for the HamsterKombat game. It automates interactions with the "Hamster Kombat" API, performing actions such as "taps", purchasing boosts, claiming the daily bonus, and synchronizing the game state, all in a scheduled and asynchronous manner.
 
-## Requirements
+## 📋 Requirements
 
 This project requires Python 3.11 and the following Python packages:
 
@@ -18,7 +18,7 @@ These can be installed using pip:
 pip install -r requirements.txt
 ```
 
-## Docker
+## 🐳 Docker
 
 A Dockerfile is provided for running the bot in a Docker container. To build and run the Docker container:
 
@@ -27,7 +27,7 @@ docker build -t hamsterfarmer-bot .
 docker run -d hamsterfarmer-bot
 ```
 
-## Usage
+## 🚀 Usage
 
 To run the bot, simply execute the main.py script:
 
@@ -37,10 +37,10 @@ python main.py
 
 The bot will start and begin automating tasks in the game.
 
-Configuration
+# ⚙️ Configuration
 The bot uses environment variables for configuration. The `TOKEN` environment variable is required for the bot to authenticate with the HamsterKombat API.  You can set environment variables in a .env file. The bot uses the python-dotenv package to load these variables at runtime. 
 
-## Contributors
+## 👥 Contributors
 
 - [ale](https://github.com/AlessTRV)
 - [Razvyyh](https://github.com/Razvyyh)
