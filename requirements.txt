@@ -1,5 +1,5 @@
 aiohttp
 coloredlogs
-APScheduler
+apscheduler
 python-dotenv
 Brotli
