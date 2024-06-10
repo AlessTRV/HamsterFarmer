@@ -1,4 +1,4 @@
-FROM python:3.12.3
+FROM python:3.11
 
 RUN apt update && apt install tzdata -y
 ENV TZ="Europe/Rome"
