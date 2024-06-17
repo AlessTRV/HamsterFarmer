@@ -3,12 +3,13 @@ FROM python:3.11
 RUN apt update && apt install tzdata -y
 ENV TZ="Europe/Rome"
 
+
 # Imposta la directory di lavoro nel contenitore
 WORKDIR /app
 
 # Copia il file dei requisiti e installa le dipendenze
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia il codice dell'applicazione nella directory di lavoro del contenitore
 COPY . .
